@@ -1,25 +1,22 @@
-//
-//  ViewController.swift
-//  nibDemo
-//
-//  Created by Mostafa AbdEl Fatah on 10/18/18.
-//  Copyright © 2018 Mostafa AbdEl Fatah. All rights reserved.
-//
 
 import UIKit
 
-class ViewController: UIViewController {
+fileprivate let cellIdentifier = "cell"
+class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        tableView.register(UINib.init(nibName: "Cell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 15
     }
-
-
+   
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:TableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TableViewCell
+        
+        return cell;
+    }
+    
 }
-
